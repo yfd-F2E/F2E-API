@@ -3,7 +3,7 @@
 
 ## 1. 如何使用
 
-> tips: api.js中使用到了IE9不兼容的Promise，为了兼容IE9，须先引入promise.js
+> tips: api.js不依赖jQuery,但由于其中使用到了IE9不兼容的新特性Promise，为了兼容IE9，须先引入promise.js
 
 ````
 <script src="api/promise.js"></script>
@@ -109,28 +109,61 @@
 ````
   
   ### getRows(options)
-  获取多行（多条记录），返回一个Promise实例，必要参数options
+  获取多行（多条记录），必要参数options
   
   ### getCategory(options)
-  获取某分类下的子分类，返回一个Promise实例，必要参数options
+  获取某分类下的子分类，必要参数options
   
   ### getProvinces(options)
-  获取省份和城市，返回一个Promise实例，可选参数options
+  获取省份和城市，可选参数options
   
   ### getSeo(options)
-  获取省份和城市，返回一个Promise实例，可选参数options
+  获取省份和城市，可选参数options
   
   ### getAlbum(options)
-  获取某条记录的相册，返回一个Promise实例，必要参数options
+  获取某条记录的相册，必要参数options
   
   ### getAddr(options)
-  获取所有店铺地址，返回一个Promise实例，可选参数options
+  获取所有店铺地址，可选参数options
   
   ### postFeedback(options)
-  提交留言反馈，返回一个Promise实例，必要参数options
+  提交留言反馈，必要参数options
   
   ### postEmail(options)
-  邮箱订阅，返回一个Promise实例，必要参数options
+  邮箱订阅，必要参数options
   
   ### search(options)
-  关键字查询，返回一个Promise实例，必要参数options
+  关键字查询，必要参数options
+  
+  
+## 5. 最后我再说两句，最后两句....
+  1. API实例方法中的ajax方法和getUrl方法是其他方法的底层实现，在项目中几乎用不到，但是为了各人的骚操作，我把它们暴露出来了。
+  2. API实例方法中除ajax以外的方法均返回一个Promise实例，方法参数options有这种操作：<br>
+  当options中不存在data属性时，我认为options就是data，而当options中存在data属性时，我认为你还想配置其他属性（嗯，虽然配置了也不一定起作用），
+  因为在实例化API时，加入没有禁止自动拼接路径，则默认所有方法都会自动对img_url、big_img和video_src这三个字段拼接路径，因此，其方法中除了data属性外
+  就不需要配置其他属性了
+  ````$xslt
+  var options = {
+      data: {
+        id: 214,
+        title_en: 1,
+        sub_title: 1
+      }
+  };
+   
+  var data = {
+      id: 214,
+      title_en: 1,
+      sub_title: 1
+  };
+   
+  api.getRow(options).then(function(response){
+      // 这里得到的结果和下面那货得到的结果是一样的
+  });
+   
+  api.getRow(data).then(function(response){
+      // 这里得到的结果和上面那货得到的结果是一样的
+  });
+  
+  ````
+    
