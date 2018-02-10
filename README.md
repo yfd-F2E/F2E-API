@@ -23,17 +23,18 @@
   ### rootdir
   配置网站根目录地址，默认值：''
   > 例：
-    rootdir: 'test.yfd.com.cn/yinger/' or rootdir: 'test.yfd.com.cn/yinger'
+    rootdir: 'test.yfd.com.cn/yinger/' 或 rootdir: 'test.yfd.com.cn/yinger'，<br>
+    很显然最后一条斜杠是可有可无的
   
   ### database
   配置网站所使用的数据库，默认值：'access'
   > 例：
-    database: 'access' or rootdir: 'sql'
+    database: 'access' or database: 'sql'
     
   ### autoCompletePath
   配置需要自动拼接路径的字段，当读取该字段时，自动为该字段拼接rootdir，默认值：['img_url', 'big_img', 'video_src']
-  > 当只有一个字段时，可直接写字段名，当有多个字段时为一个数组，如：
-  只需要拼接img_url字段： autoCompletePath: 'img_url'
+  > 当只有一个字段时，可直接写字段名，当有多个字段时为一个数组，例：<br>
+  只需要拼接img_url字段： autoCompletePath: 'img_url' <br>
   需要多个字段： autoCompletePath: ['img_url', 'big_img', 'video_src']
   
 
@@ -83,9 +84,29 @@
   - 'postEmail'
   - 'search'
   
+ 
   
   ### getRow(options)
-  获取一行（一条记录），返回一个Promise实例，必要参数options
+  获取一行（一条记录），必要参数options
+  ````$xslt
+  var options = {
+      data: {
+          id: 214,
+          title_en: 1,
+          sub_title: 1,
+          big_img: 1,
+          video_src: 1
+      },
+      autoCompletePath: ['img_url', 'big_img']
+  };
+   
+  api.getRow(options).then(function(response){
+      var data = response.data;
+      // to do something...
+  }).catch(err){
+      console.log(err);
+  }
+````
   
   ### getRows(options)
   获取多行（多条记录），返回一个Promise实例，必要参数options
