@@ -138,9 +138,9 @@
   
 ## 5. 最后我再说两句，最后两句....
   1. API实例方法中的ajax方法和getUrl方法是其他方法的底层实现，在项目中几乎用不到，但是为了各人的骚操作，我把它们暴露出来了。
-  2. API实例方法中除ajax以外的方法均返回一个Promise实例，方法参数options有这种操作：<br>
+  2. API实例方法中除ajax和getUrl以外的方法均返回一个Promise实例，其参数options有这种操作：<br>
   当options中不存在data属性时，我认为options就是data，而当options中存在data属性时，我认为你还想配置其他属性（嗯，虽然配置了也不一定起作用），
-  因为在实例化API时，加入没有禁止自动拼接路径，则默认所有方法都会自动对img_url、big_img和video_src这三个字段拼接路径，因此，其方法中除了data属性外
+  因为在实例化API时，假如没有禁止自动拼接路径，则默认所有方法都会自动对img_url、big_img和video_src这三个字段拼接路径，因此，其方法中除了data属性外
   就不需要配置其他属性了
   ````$xslt
   var options = {
