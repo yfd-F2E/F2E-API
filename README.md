@@ -5,41 +5,8 @@
 
 > tips: 但由于代码中使用到了ES6中的新特性Promise，对于不兼容Promise的浏览器(如IE9)，须先引入promise.js
 
-1. ES6语法或前端构建工具环境下：
 ````
-// html
- 
-<script src="js/main.js"></script>
-
- 
-</body>
-````
-````main.js
-// main.js
-     
-import Promise from '../api/promise';
-import API from '../api/api';
-    
-let api = new API(options);
-    
-````
-
-2. ES5语法：
-````
-// html
- 
-<script src="api/promise.js"></script>
-<script src="api/api.js"></script>
-<script src="js/main.js"></script>
-
- 
-</body>
-````
-````main.js
-// main.js
- 
 var api = new API(options);
-
 ````
 
 ## 2. API配置项(options)
