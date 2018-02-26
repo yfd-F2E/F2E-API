@@ -6,6 +6,8 @@
 > tips: 但由于代码中使用到了ES6中的新特性Promise，对于不兼容Promise的浏览器(如IE9)，须先引入promise.js
 
 ````
+import API from '../api/api';
+ 
 var api = new API(options);
 ````
 
