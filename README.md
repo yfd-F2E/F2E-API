@@ -3,16 +3,16 @@
 
 ## 1. 如何使用
 
-> tips: 但由于代码中使用到了ES6中的新特性Promise，对于不兼容Promise的浏览器(如IE9)，须先引入promise.js
+> tips: 但由于代码中使用到了ES6中的新特性Promise，对于某些不兼容Promise的浏览器(IE否定三连：不是我，你可别乱说，那是我弟)，我们提供了相应的polyfill（promise.js）
 
-````
+````javascript
 import API from '../api/api';
  
 var api = new API(options);
 ````
 
 ## 2. API配置项(options)
-  ### rootdir
+  ### rootdir 
   配置网站根目录地址，默认值：''
   > 例：
     rootdir: 'test.yfd.com.cn/yinger/' 或 rootdir: 'test.yfd.com.cn/yinger'，<br>
@@ -25,7 +25,7 @@ var api = new API(options);
     当值为'access'或'sql'之外的任何值时，将自动设置为'access'
     
   ### fixPath
-  配置需要自动拼接路径的字段，当读取该字段时，自动为该字段拼接rootdir，如不需要自动拼接请设置为false，
+  配置需要自动拼接路径的字段，当读取该字段时，返回一个该字段拼接rootdir后的绝对路径，如不需要自动拼接请设置为false，
   默认值：['img_url', 'big_img', 'video_src', 'original_path']
   > 当只有一个字段时，可直接写字段名，当有多个字段时为一个数组，例：<br>
   不需要拼接：fixPath: false <br>
@@ -36,6 +36,9 @@ var api = new API(options);
   ### decode
   配置需要自动解码的字段，当读取该字段时，自动解码(unescape(str))该字段，如不需要自动解码请设置为false，
   默认值：['zhaiyao', 'content']
+  > 虽然ECMAScript v3 已从标准中删除了unescape()函数，并反对使用它，
+  但是我发现使用decodeURI()和decodeURIComponent()并不能完全正确解码后台返回的编码，
+  故按照后台提供的接口文档使用了unescape()函数进行解码
 
 ## 3. API实例属性
   ### rootdir
@@ -46,13 +49,13 @@ var api = new API(options);
   
   > 例：
 
-   ````database
+   ````javascript
    var api = new API({
        rootdir: 'test.yfd.com.cn/yinger/'
    });
     
-   console.log(api.rootdir)  --> test.yfd.com.cn/yinger
-   console.log(api.database) --> access
+   // console.log(api.rootdir)  --> test.yfd.com.cn/yinger
+   // console.log(api.database) --> access
    ````
   
 ## 4. API实例方法
@@ -64,8 +67,8 @@ var api = new API(options);
 
   ### getRow(options)
   获取一行（一条记录），必要参数options
-  ````data
-  读取id为214的记录，需要英文标题
+  ````javascript
+  // 读取id为214的记录，需要英文标题
    
   // 使用默认配置
   var options = {
@@ -248,7 +251,7 @@ var api = new API(options);
   
 ## 5. 注意
   1. 当读取后台数据时，由于后台接口限制，并不能如我们所愿的返回所有我们希望的所有字段，
-  所以，当你希望后台返回的数据包含以下字段时，需要将该字段的值设置为1发送给后台，这些字段有：
+  所以，当你希望后台返回的数据包含以下字段时，需要将该字段的值设置为1发送到后台，这些字段有：
   
   ````
   title_en: 0,          // 英文标题
@@ -263,5 +266,5 @@ var api = new API(options);
   tel_phone: 0          // 电话
   ````
 
-  2. api实例方法中的options配置对象在源码中已经针对我们的项目设置适当的默认配置但依旧可以独立配置
+  2. api实例方法中的options配置对象都已经针对我们的项目进行了适当的默认配置，但依旧可以独立配置以覆盖默认配置
   
