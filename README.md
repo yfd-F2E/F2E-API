@@ -98,8 +98,8 @@ var api = new API(options);
   
   ### getRows(options)
   获取多行（多条记录）列表，必要参数options
-  ````
-  读取categoryId为214的推荐记录，需要英文标题，每页容量为6，起始页码为1
+  ````javascript
+  // 读取categoryId为214的推荐记录，需要英文标题，每页容量为6，起始页码为1
    
   // 使用默认配置
   var options = {
@@ -128,7 +128,7 @@ var api = new API(options);
   
   ### getSubmenu(options)
   获取某分类的子菜单(分类/子级)列表，必要参数options
-  ````
+  ````javascript
   var options = {
       categoryId: 214,    // 父类别ID
   };
@@ -146,7 +146,7 @@ var api = new API(options);
   
   ### getProvinces([options])
   获取全部省份和城市列表，可选参数options
-  ````
+  ````javascript
   api.getProvinces().then(function(response){
       // to do something...
   });
@@ -154,14 +154,14 @@ var api = new API(options);
   
   ### getSeo([options])
   获取省份和城市，可选参数options
-  ````
+  ````javascript
   api.getSeo().then(function(response){
       // to do something...
   });
   ````
   ### getAlbum(options)
   获取某条记录的相册列表，必要参数options
-  ````
+  ````javascript
    api.getAlbum(214).then(function(response){
        // to do something...
    });
@@ -169,7 +169,7 @@ var api = new API(options);
   
   ### getStores([options])
   获取所有店铺信息，可选参数options
-  ````
+  ````javascript
   api.getStores().then(function(response){
       // to do something...
   });
@@ -178,7 +178,7 @@ var api = new API(options);
   
   ### postMsg(options)
   提交留言反馈，必要参数options
-  ````
+  ````javascript
   var data = {
       txtName: 'yfd',            // 称呼，必须
       txtEmail: 'yfd@yfd.com'    // 邮箱，必须
@@ -203,7 +203,7 @@ var api = new API(options);
   ### search(options)
   关键字查询，必要参数options
 
-  ````
+  ````javascript
   var data = {
       keyword: 'yfd'    // 关键字
   };
@@ -220,7 +220,7 @@ var api = new API(options);
   ````
   ### ※ getUrl(fnName)
   返回上述方法对应的请求地址，必要参数fnName是对应的方法名(函数名)；
-  ````
+  ````javascript
     console.log(api.getUrl('getRow'));
     // test.yfd.com.cn/yinger/tools/yufei.ashx?action=get_model_parms
   ````
