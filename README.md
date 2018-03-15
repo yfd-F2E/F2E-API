@@ -3,7 +3,7 @@
 
 ## 1. 如何使用
 
-> tips: 但由于代码中使用到了ES6中的新特性Promise，对于某些不兼容Promise的浏览器(IE否定三连：不是我，你可别乱说，那是我弟)，我们提供了相应的polyfill（promise.js）
+> tips: 此API使用原生js封装，不依赖其他任何库，但由于代码中使用到了ES6中的新特性Promise，对于某些不兼容Promise的浏览器(IE否定三连：不是我，你可别乱说，那是我弟)，我们提供了相应的polyfill（promise.js）
 
 ````javascript
 import API from '../api/api';
