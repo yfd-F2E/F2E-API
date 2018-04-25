@@ -5,15 +5,45 @@
 
 > tips: 此API使用原生js封装，不依赖其他任何库，但由于代码中使用到了ES6中的新特性Promise，对于某些不兼容Promise的浏览器(IE否定三连：不是我，你可别乱说，那是我弟)，我们提供了相应的polyfill（promise.js）
 
+// ES6  
+
 ````javascript
+
+
+
 import API from '../api/api';
  
 var api = new API(options);
 ````
 
-## 2. API配置项(options)
-  ### rootdir 
-  配置网站根目录地址，默认值：''
+// ES5  
+
+````html
+
+<body>
+ 
+ <!-- 这里是或多html结构和内容 -->
+ 
+ <script src="api/promise.js"></script>  
+ <script src="api/api.js"></script>  
+ <script src="js/main.js"></script>
+
+````
+
+````javascript
+
+// main.js
+
+var api = new API(options);
+
+````
+
+
+
+## 2. API配置项(options)  
+
+  ### rootdir  
+    配置网站根目录地址，默认值：''
   > 例：
     rootdir: 'test.yfd.com.cn/yinger/' 或 rootdir: 'test.yfd.com.cn/yinger'，<br>
     很显然最后一条斜杠是可有可无的
