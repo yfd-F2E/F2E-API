@@ -14,7 +14,9 @@
 import API from '../api/api';
  
 var api = new API(options);
-````
+````  
+  
+  
 
 // ES5  
 
@@ -28,6 +30,7 @@ var api = new API(options);
  <script src="api/api.js"></script>  
  <script src="js/main.js"></script>
 
+</body>
 ````
 
 ````javascript
@@ -41,9 +44,8 @@ var api = new API(options);
 
 
 ## 2. API配置项(options)  
-
-  ### rootdir  
-    配置网站根目录地址，默认值：''
+### rootdir  
+配置网站根目录地址，默认值：''
   > 例：
     rootdir: 'test.yfd.com.cn/yinger/' 或 rootdir: 'test.yfd.com.cn/yinger'，<br>
     很显然最后一条斜杠是可有可无的
